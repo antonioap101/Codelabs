@@ -3,10 +3,10 @@ package es.ulpgc.codelabs2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -14,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.ulpgc.codelabs2.ui.theme.Codelabs2Theme
 
@@ -28,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //Greeting("Android")
+                    GreetingText("Happy Birthday Antonio", from = "Silvia")
                 }
             }
         }
@@ -38,18 +40,24 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
-    Column(modifier = modifier) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    ) {
         Text(
             text = message,
             fontSize = 100.sp,
             lineHeight = 116.sp,
-            fontWeight = FontWeight.Light
+            fontWeight = FontWeight.Light,
+            textAlign = TextAlign.Center
         )
         Text(
-            text = from,
+            text = "from $from",
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier
+                .padding(16.dp)
+                .align(alignment = Alignment.End)
         )
     }
 }
@@ -59,6 +67,6 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
 fun GreetingPreview() {
     Codelabs2Theme {
         //Greeting("Antonio")
-        GreetingText(message = "Happy Birthday Antonio!", from = "from Silvia")
+        GreetingText(message = "Happy Birthday Antonio!", from = "Silvia")
     }
 }
