@@ -3,6 +3,7 @@ package es.ulpgc.codelabs2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,6 +39,14 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.androidparty)
+    Image(
+        painter = image,
+        contentDescription = null
+    )
+}
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
@@ -62,11 +72,20 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Codelabs2Theme {
         //Greeting("Antonio")
         GreetingText(message = "Happy Birthday Antonio!", from = "Silvia")
+    }
+}*/
+
+@Preview(showBackground = false)
+@Composable
+fun BirthdayCardPreview() {
+    Codelabs2Theme {
+        GreetingImage("Happy Birthday Antonio!", "Silvia")
     }
 }
