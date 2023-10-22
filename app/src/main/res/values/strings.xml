@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Codelabs2</string>
+    <string name="happy_birthday_antonio">Happy Birthday Antonio</string>
+    <string name="from_silvia">from Silvia</string>
 </resources>
