@@ -11,18 +11,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import es.ulpgc.codelabs2.ui.theme.Codelabs2Theme
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.*
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.Icon
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Codelabs2Theme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Antonio")
+                    BusinessCard()
                 }
             }
         }
@@ -30,17 +44,73 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
+fun BusinessCard(modifier: Modifier = Modifier) {
+    Box(
         modifier = modifier
+            .fillMaxSize()
+            .background(Color(0xFFDAF0B3)),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(16.dp)
+        ) {
+            ProfileImage()
+            Spacer(modifier = Modifier.height(16.dp))
+            ProfileInfo("Antonio Aparicio")
+            Spacer(modifier = Modifier.height(16.dp))
+            ContactInfo()
+        }
+    }
+}
+
+@Composable
+fun ProfileImage() {
+    Image(
+        painter = painterResource(id = R.drawable.android_logo),
+        contentDescription = null,
+        modifier = Modifier.size(200.dp)
     )
 }
 
+@Composable
+fun ProfileInfo(name: String) {
+    Text(
+        text = name,
+        style = TextStyle(fontSize = 32.sp,
+            fontWeight = FontWeight.Bold
+        )
+    )
+    Text(
+        text = "Android Junior Developer",
+        style = TextStyle(fontSize = 24.sp,
+            fontWeight = FontWeight.Normal,
+            color = Color(0xFFA600FF)
+        )
+    )
+}
+
+@Composable
+fun ContactInfo() {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(imageVector = Icons.Default.Phone, contentDescription = null, tint = Color.Black)
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = "+34 123 456 789")
+    }
+    Spacer(modifier = Modifier.height(8.dp))
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(imageVector = Icons.Default.Email, contentDescription = null, tint = Color.Black)
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = "antonio.aparicio@ulpgc.com")
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun BusinessCardPreview() {
     Codelabs2Theme {
-        Greeting("Antonio")
+        BusinessCard()
     }
 }
