@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import es.ulpgc.codelabs2.ui.theme.Codelabs2Theme
 import androidx.compose.ui.graphics.Color
-
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -84,7 +83,7 @@ fun ProfileInfo(name: String) {
         )
     )
     Text(
-        text = "Android Junior Developer",
+        text = "Junior Android Developer",
         style = TextStyle(fontSize = 24.sp,
             fontWeight = FontWeight.Normal,
             color = Color(0xFFA600FF)
