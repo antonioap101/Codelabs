@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import es.ulpgc.codelabs2.ui.theme.Codelabs2Theme
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.*
+
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,6 +21,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Icon
 import androidx.compose.ui.Alignment
@@ -94,15 +95,27 @@ fun ProfileInfo(name: String) {
 @Composable
 fun ContactInfo() {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(imageVector = Icons.Default.Phone, contentDescription = null, tint = Color.Black)
+        Icon(imageVector = Icons.Default.Phone, contentDescription = null, tint = Color.Black,
+             modifier = Modifier.size(30.dp))
         Spacer(modifier = Modifier.width(8.dp))
-        Text(text = "+34 123 456 789")
+        Text(text = "+34 123 456 789",
+            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Normal))
     }
     Spacer(modifier = Modifier.height(8.dp))
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(imageVector = Icons.Default.Email, contentDescription = null, tint = Color.Black)
+        Icon(imageVector = Icons.Default.Email, contentDescription = null, tint = Color.Black,
+             modifier = Modifier.size(30.dp))
         Spacer(modifier = Modifier.width(8.dp))
-        Text(text = "antonio.aparicio@ulpgc.com")
+        Text(text = "antonio.aparicio@ulpgc.com",
+            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Normal))
+    }
+    Spacer(modifier = Modifier.height(8.dp))
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(imageVector = Icons.Default.LocationOn, contentDescription = null, tint = Color.Black,
+             modifier = Modifier.size(30.dp))
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = "ULPGC",
+            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Normal))
     }
 }
 
